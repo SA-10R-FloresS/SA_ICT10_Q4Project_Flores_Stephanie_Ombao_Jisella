@@ -1,0 +1,158 @@
+<html>
+<head>
+	<!-- META ATTRIBUTES -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- WEBSITE -->
+	<title>Attendance Tracker | 10R 25-26</title>
+	<link rel="icon" type="image/x-icon" href="favicon.png">
+
+	<!-- PYTHON -->
+	<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+	<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+	<!-- BS5 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<link rel="stylesheet" href="style.css">
+
+	<style>
+		.container {
+			background: rgba(255, 240, 238, 0.42);
+			border: 0.5px solid rgba(180, 120, 125, 0.28);
+			padding: 2rem;
+			border-radius: 16px;
+			box-shadow: 0 10px 30px rgba(192, 118, 122, 0.25);
+			width: 100%;
+			max-width: 650px;
+			position: relative;
+			margin-bottom: 1.5rem;
+			margin: 0 auto;
+		}
+
+		.input-card {
+			display: flex;
+			gap: 25px;
+		}
+
+		.form-label {
+			font-weight: 670;
+			font-size: 1rem;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: rgba(130, 70, 75, 0.7);
+			margin-bottom: 5px;
+			display: block;
+		}
+
+		select, .form-control {
+			background: rgba(255, 248, 246, 0.6) !important;
+			border: 0.5px solid rgba(180, 120, 125, 0.35) !important;
+			color: var(--wine) !important;
+			transition: border-color 0.15s, background 0.15s !important;
+		}
+		
+		#disabledOption, .form-control::placeholder {
+			color: var(--bg) !important;
+		}
+
+		select, .form-control:hover {
+			border-color: rgba(192, 118, 122, 0.5) !important;
+		}
+
+		select, .form-control:focus {
+			border-color: rgba(160, 90, 95, 0.55) !important;
+			background: rgba(255, 248, 246, 0.85) !important;
+			outline: none !important;
+			box-shadow: none !important;
+		}
+
+		button {
+			border-radius: 8px;
+			font-family: 'Space Mono', monospace;
+			font-size: 1.1rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			cursor: pointer;
+			letter-spacing: 0.06em;
+			transition: all 0.15s ease;
+			border: 0.5px solid rgba(180, 120, 125, 0.38);
+		}
+
+		button { background: #a55a5c; color: #fff8f6; }
+		button:hover { background: #b86668; }
+		
+		#output img {
+			max-width: 100%;
+			height: auto;
+			border: 4px dotted rgba(181, 93, 117, 0.5);
+			border-radius: 16px;
+		}
+	</style>
+</head>
+<body>
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-expand-lg fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand ms-3" href="#">10-Ruby SY 2526</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-3">
+					<li class="nav-item px-3">
+						<a class="nav-link" href="classmates.html">Classmates</a>
+					</li>
+					<li class="nav-item px-3">
+						<a class="nav-link active" href="attendance.html">Attendance</a>
+					</li>
+					<li class="nav-item px-3">
+						<a class="nav-link" href="gallery.html">Gallery</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- HEADER -->
+	<div class="animate__animated animate__fadeInDown">
+		<p id="schoolYear" class="text-center mt-5">♡ S.Y. 2025-2026 ♡</p>
+		<h1 class="text-center">attendance tracker</h1>
+	</div>
+
+	<!-- INPUT FIELDS -->
+	<div class="container animate__animated animate__fadeIn">
+		<div class="input-card">
+			<div class="field">
+				<label class="form-label" for="nameInput">Select a Day:</label>
+				<select id="dayOfTheWeek" class="form-control">
+					<option id="disabledOption" disabled selected hidden>Choose a day...</option>
+					<option>Monday</option>
+					<option>Tuesday</option>
+					<option>Wednesday</option>
+					<option>Thursday</option>
+					<option>Friday</option>
+				</select>
+			</div>
+			<div class="field">
+				<label class="form-label" for="absences">Absences:</label>
+				<input type="int" class="form-control" id="absences" min="0" placeholder="0">
+			</div>
+			<button py-click="displaying" class="w-25">Submit</button>
+		</div>
+		
+		<hr class="my-4">
+
+		<div id="output" class="mt-3 p-2 text-center fs-5"></div>
+	</div>
+
+	<py-config>
+		packages = ["numpy", "matplotlib"]
+	</py-config>
+
+	<py-script src="attendance.py"></py-script>
+</body>
+</html>
