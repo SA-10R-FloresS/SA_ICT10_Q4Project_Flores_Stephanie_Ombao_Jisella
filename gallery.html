@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- META ATTRIBUTES -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- WEBSITE -->
+	<title>Gallery | 10R 25-26</title>
+	<link rel="icon" type="image/x-icon" href="favicon.png">
+
+	<!-- PYTHON -->
+	<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+	<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+	<!-- BS5 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<link rel="stylesheet" href="style.css">
+
+	<style>
+		.filter-bar {
+			display: flex;
+			justify-content: center;
+			gap: 8px;
+			flex-wrap: wrap;
+			padding: 0 24px 32px;
+		}
+
+		.filter-btn {
+			font-family: 'Space Mono', monospace;
+			font-size: 10px;
+			font-weight: 700;
+			letter-spacing: 0.07em;
+			text-transform: uppercase;
+			padding: 6px 16px;
+			border-radius: 20px;
+			border: 0.5px solid rgba(160, 95, 100, 0.35);
+			background: rgba(255, 240, 238, 0.35);
+			color: #7a3a3c;
+			cursor: pointer;
+			transition: all 0.15s ease;
+		}
+
+		.filter-btn:hover,
+		.filter-btn.active {
+			background: #a55a5c;
+			color: #fff8f6;
+			border-color: #a55a5c;
+		}
+
+		.memory-card {
+			background: rgba(255, 240, 238, 0.6) !important;
+			border: 0.5px solid rgba(180, 120, 125, 0.25) !important;
+			border-radius: 16px !important;
+			overflow: hidden;
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.memory-card:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 8px 20px rgba(74, 30, 32, 0.08) !important;
+		}
+
+		.gallery-grid {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 0 24px;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 12px;
+		}
+
+		@media (max-width: 700px) {
+			.gallery-grid { grid-template-columns: repeat(2, 1fr); }
+		}
+
+		.card {
+			width: 500px !important;
+		}
+
+		.card-img-wrapper {
+			width: 100% !important;
+			height: 260px;
+			overflow: hidden;
+			background: rgba(255, 220, 215, 0.38);
+		}
+
+		.card-img-wrapper img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.memory-title {
+			font-size: 13px !important;
+			font-weight: 700;
+			color: #4a1e20;
+			line-height: 1.4;
+		}
+
+		.memory-meta {
+			font-size: 11px !important;
+			color: rgba(130, 65, 70, 0.65) !important;
+			letter-spacing: 0.02em;
+		}
+	</style>
+</head>
+<body>
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-expand-lg fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand ms-3" href="#">10-Ruby SY 2526</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-3">
+					<li class="nav-item px-3">
+						<a class="nav-link" href="classmates.html">Classmates</a>
+					</li>
+					<li class="nav-item px-3">
+						<a class="nav-link" href="attendance.html">Attendance</a>
+					</li>
+					<li class="nav-item px-3">
+						<a class="nav-link active" href="gallery.html">Gallery</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- HEADER -->
+	<div class="animate__animated animate__fadeInDown">
+		<p id="schoolYear" class="text-center mt-5">♡ S.Y. 2025-2026 ♡</p>
+		<h1 class="text-center">memories with 10R</h1>
+	</div>
+
+	<!-- FILTER TABS -->
+	<div class="filter-bar" id="filterBar">
+		<button class="filter-btn active" id="filter-all">All</button>
+		<button class="filter-btn" id="filter-1">1st Quarter</button>
+		<button class="filter-btn" id="filter-2">2nd Quarter</button>
+		<button class="filter-btn" id="filter-3">3rd Quarter</button>
+		<button class="filter-btn" id="filter-4">4th Quarter</button>
+	</div>
+
+	<!-- GALLERY -->
+	<div class="gallery-grid" id="galleryGrid"></div>
+
+	<py-script src="gallery.py"></py-script>
+</body>
+</html>

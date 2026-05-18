@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+	--bg: #dfc5c6;
+	--wine: #4a1e20;
+	--shadow67: #c0767a;
+}
+
+body {
+	background-color: var(--bg);
+	background-image: radial-gradient(circle, rgba(160,100,105,0.2) 1.5px, transparent 1.5px);
+	background-size: 26px 26px;
+
+	font-family: 'Space Mono', monospace;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.navbar {
+	background-color: rgba(180, 115, 120, 0.22);
+	border-bottom: 0.5px solid rgba(160, 95, 100, 0.3);
+	backdrop-filter: blur (8px);
+	-webkit-backdrop-filter: blur(8px);
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 67px;
+}
+
+.navbar-brand {
+	font-family: 'Playfair Display';
+	font-weight: 670;
+	font-style: italic;
+	font-size: 2rem;
+	color: #692d30;
+	text-shadow: 0 0 5px var(--shadow67);
+	transition: all 0.15s ease;
+}
+
+.navbar-brand:hover {
+	color: #a65b5e;
+}
+
+.nav-item {
+	display: flex;
+	gap: 25px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-item a {
+	font-size: 1.1rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #7a3a3c;
+	letter-spacing: 0.12em;
+
+	display: block;
+	border: 0.5px solid transparent;
+	border-radius: 20px;
+	transition: all 0.15s ease;
+}
+
+.nav-item a:hover,
+.nav-item a.active {
+	background: rgba(160, 95, 100, 0.22);
+	border-color: rgba(160, 95, 100, 0.38);
+	color: var(--wine);
+	text-shadow: 0 0 5px var(--shadow67);
+}
+
+#schoolYear {
+	font-size: 1.2rem;
+	letter-spacing: 0.04em;
+	color: rgba(130, 70, 75, 0.7);
+}
+
+h1 {
+	margin-top: -20px;
+	font-family: 'Playfair Display';
+	font-weight: 700;
+	font-size: 3em;
+	color: var(--wine);
+	letter-spacing: -0.02rem;
+	text-shadow: 0 0 5px var(--shadow67);
+}
